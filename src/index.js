@@ -3,6 +3,23 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
+// Totally Good Programing adding firebase which is VERY COOL
+const firebaseConfig = {
+  apiKey: "AIzaSyDCiZ6bbFMCBZgouyoU52tOnrQMz4dxKeA",
+  authDomain: "onlyhands-f2420.firebaseapp.com",
+  projectId: "onlyhands-f2420",
+  storageBucket: "onlyhands-f2420.appspot.com",
+  messagingSenderId: "497487467556",
+  appId: "1:497487467556:web:ec3dfb4e747362ec2fb4b1",
+  measurementId: "G-699HFVWLMC"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
