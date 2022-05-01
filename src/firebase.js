@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth"
 
 const firebaseConfig = {
   apiKey: "AIzaSyDCiZ6bbFMCBZgouyoU52tOnrQMz4dxKeA",
@@ -21,8 +21,23 @@ export const provider = new GoogleAuthProvider()
 
 export const signInWithGoogle = () => {
     signInWithPopup(auth, provider).then((result) => {
-        console.log(result)
+        const name = result.user.displayName;
+        const email = result.user.email;
+        const profilePic = result.user.photoURL;
+
+        localStorage.setItem("name", name)
+        localStorage.setItem("email", email)
+        localStorage.setItem("profilePic", profilePic)
+        localStorage.setItem("login", true)
     }).catch((err) => {
-        console.log("err")
+        console.log(err)
     })
 }
+
+export const SignOut = () => {
+    signOut().then(() => {
+        console.log("Success");
+    }).catch((err) => {
+        console.log(err);
+    })
+}   

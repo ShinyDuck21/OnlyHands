@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 
 app.get('/', (req, res) => {
-  res.send('Work')
+  res.send()
 })
 
 exports.app = functions.https.onRequest(app);
